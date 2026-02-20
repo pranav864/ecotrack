@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | EcoTracker</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-green: #0c816a;
+      --dark-green: #074d3f;
+      --accent-light: #d7f0e8;
+      --glass: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c816a 0%, #074d3f 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Glassmorphism */
+    .navbar {
+      background: rgba(255, 255, 255, 0.05) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #fff !important; }
+    .nav-link { color: rgba(255, 255, 255, 0.8) !important; transition: 0.3s; text-transform: capitalize; }
+    .nav-link:hover, .nav-link.active { color: var(--accent-light) !important; }
+
+    /* Hero Section */
+    .hero-title {
+      font-weight: 800;
+      font-size: 3.5rem;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #fff, var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Professional Card Styling */
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 24px;
+      color: #333;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      background: #ffffff;
+    }
+
+    .card h5 { color: var(--primary-green); font-weight: 700; }
+
+    /* Custom Bullet Points */
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li::before {
+      content: "✓";
+      color: var(--accent-light);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0,0,0,0.2);
+      padding: 50px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-search {
+      border: 1px solid var(--accent-light);
+      color: var(--accent-light);
+      border-radius: 30px;
+    }
+
+    .btn-search:hover { background: var(--accent-light); color: var(--primary-green); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🌱 EcoTracker</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 bg-transparent text-white border-secondary" type="search" placeholder="Search">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <section class="container mt-5 pt-5 text-center">
+    <div data-aos="fade-up">
+      <h1 class="hero-title">About EcoTracker</h1>
+      <p class="lead mx-auto" style="max-width: 700px; opacity: 0.9;">
+        We are a premier gamified movement designed to bridge the gap between environmental awareness and daily action.
+      </p>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h3 style="color: var(--accent-light);">🌱 Our Motto</h3>
+        <p class="display-6 fw-bold">"Small Actions,<br>Big Impact"</p>
+        <p class="fs-5">We believe every eco-friendly choice counts. Our mission is to empower individuals to take simple daily actions that collectively create a healthier planet.</p>
+      </div>
+      
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="p-5" style="background: var(--glass); border-radius: 30px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="color: var(--accent-light);">💡 The Vision</h3>
+          <p>EcoTracker makes sustainability fun and rewarding. Whether it’s planting trees, cycling, or reducing electricity usage, we provide the motivation to make eco-conscious living a permanent lifestyle.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 pt-5">
+      <h3 class="text-center mb-5" data-aos="zoom-in">🏆 Platform Ecosystem</h3>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-4 h-100">
+            <h5>Track Your Progress</h5>
+            <p class="text-muted">Earn points for every action and visualize your carbon offset journey in real-time.</p>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-4 h-100">
+            <h5>Compete and Connect</h5>
+            <p class="text-muted">Compare achievements with the global community and inspire others to join the cause.</p>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="card p-4 h-100 shadow-sm">
+            <h5 style="color: var(--primary-green);">Monthly Challenges</h5>
+            <p class="text-muted">Participate in curated environmental missions to stay motivated and earn limited badges.</p>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="card p-4 h-100 shadow-sm">
+            <h5 style="color: var(--primary-green);">Rewards & Recognition</h5>
+            <p class="text-muted">Top performers gain exclusive status and rewards for their commitment to the planet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 pt-5 g-4">
+      <div class="col-lg-6" data-aos="fade-up">
+        <h3 style="color: var(--accent-light);">🌍 Stewardship</h3>
+        <p>By tracking your journey, you help:</p>
+        <ul class="feature-list fs-5">
+          <li>Reduce global carbon emissions</li>
+          <li>Normalize sustainable daily habits</li>
+          <li>Build a resilient eco-community</li>
+        </ul>
+      </div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <h3 style="color: var(--accent-light);">🌟 Why This Matters</h3>
+        <p>Individual actions create measurable impact when multiplied by millions. EcoTracker transforms passive awareness into measurable accountability.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container text-center">
+      <p>© 2026 EcoTracker | Engineering a Greener Planet 🌎</p>
+      <div class="mt-3">
+        <a href="#" class="text-white opacity-50 mx-2 text-decoration-none small">Privacy Policy</a>
+        <a href="#" class="text-white opacity-50 mx-2 text-decoration-none small">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize Animations
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out-quad'
+    });
+  </script>
+</body>
+</html>

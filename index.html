@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoTracker | Track Your Carbon Impact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #0c816a;
+            --dark-green: #074d3f;
+            --accent-light: #d7f0e8;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0c816a 0%, #074d3f 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Glassmorphism */
+        .navbar {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #fff !important; }
+        .nav-link { color: rgba(255, 255, 255, 0.8) !important; transition: 0.3s; text-transform: capitalize; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-light) !important; }
+
+        /* Hero Styling */
+        .hero {
+            padding: 120px 0;
+            background: transparent;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-img {
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            object-fit: cover;
+            height: 400px;
+        }
+
+        /* Stats Cards */
+        .stat-box {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-box:hover { transform: translateY(-10px); background: rgba(255,255,255,0.15); }
+
+        /* Point Cards */
+        .point-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 20px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+
+        .point-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: #fff;
+        }
+
+        /* Popup Styling */
+        .modal-content {
+            border-radius: 25px;
+            border: none;
+            padding: 1rem;
+        }
+
+        .modal-header { border-bottom: none; color: var(--primary-green); }
+        .modal-footer { border-top: none; }
+
+        footer {
+            background: rgba(0,0,0,0.2);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🌱 EcoTracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2 bg-transparent text-white border-secondary shadow-none" type="search" placeholder="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                
+                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" class="d-block w-100 carousel-img" alt="Nature">
+                            </div>
+                            <div class="carousel-item">
+                                
+                                <img src="https://images.unsplash.com/photo-1538935732373-f7a495fea3f6?q=80&w=1259&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-img" alt="Clean Energy">
+                            </div>
+                            <div class="carousel-item">
+                                
+                                <img src="https://plus.unsplash.com/premium_photo-1669613233557-1676c121fe73?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 carousel-img" alt="Sustainability">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h1 class="hero-title">Track. Compete. <br><span style="color: var(--accent-light);">Reduce.</span></h1>
+                    <p class="lead mb-4 opacity-75">Monitor your carbon footprint and earn Green Points for every eco-friendly action you take. Join 10,000+ heroes.</p>
+                    <a href="dashboard.html" class="btn btn-outline-light px-5 py-3 fw-bold shadow-sm" style="border-radius: 30px; transition: 0.3s;">
+                        Start Tracking
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-box">
+                    <h2 class="fw-bold">🌍 1,245</h2>
+                    <p class="mb-0 opacity-75">Total Trees Planted</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-box">
+                    <h2 class="fw-bold">🔥 12,300</h2>
+                    <p class="mb-0 opacity-75">Green Points Earned</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-box">
+                    <h2 class="fw-bold">♻ 3,200kg</h2>
+                    <p class="mb-0 opacity-75">Carbon Reduced</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <h2 class="text-center mb-5 fw-bold" data-aos="zoom-in">Earn Green Points</h2>
+        <div class="row g-4">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                <div class="point-card text-center" onclick="openModal('tree')">
+                    <div class="display-5 mb-2">🌳</div>
+                    <h4 class="fw-bold">Plant a Tree</h4>
+                    <p class="badge bg-success">+5 Points</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="point-card text-center" onclick="openModal('bicycle')">
+                    <div class="display-5 mb-2">🚲</div>
+                    <h4 class="fw-bold">Use Bicycle</h4>
+                    <p class="badge bg-success">+3 Points</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="point-card text-center" onclick="openModal('electricity')">
+                    <div class="display-5 mb-2">🔌</div>
+                    <h4 class="fw-bold">Save Energy</h4>
+                    <p class="badge bg-success">+2 Points</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="activityModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Activity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalText"></p>
+                    <p class="fw-bold text-success" id="modalPoints"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container py-5 text-center" data-aos="fade-up">
+        <div class="p-5" style="background: var(--glass); border-radius: 30px;">
+            <h2 class="fw-bold mb-4">🏆 Top Eco Heroes</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-between p-3 border-bottom border-secondary border-opacity-25">
+                        <span>🥇 Alex</span><strong>120 pts</strong>
+                    </div>
+                    <div class="d-flex justify-content-between p-3 border-bottom border-secondary border-opacity-25">
+                        <span>🥈 Priya</span><strong>110 pts</strong>
+                    </div>
+                    <div class="d-flex justify-content-between p-3">
+                        <span>🥉 Jordan</span><strong>95 pts</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <p class="mb-0 opacity-75">© 2026 EcoTracker | Compete for a Greener Planet 🌎</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const activityData = {
+            tree: { title: "🌳 Plant a Tree", text: "Planting trees absorbs CO2 and restores habitats.", points: "+5 Green Points" },
+            bicycle: { title: "🚲 Use Bicycle", text: "Commuting by bike reduces emissions and improves health.", points: "+3 Green Points" },
+            electricity: { title: "🔌 Save Electricity", text: "Turn off lights to lower demand on power plants.", points: "+2 Green Points" }
+        };
+
+        const myModal = new bootstrap.Modal(document.getElementById('activityModal'));
+
+        function openModal(type) {
+            document.getElementById('modalTitle').innerText = activityData[type].title;
+            document.getElementById('modalText').innerText = activityData[type].text;
+            document.getElementById('modalPoints').innerText = activityData[type].points;
+            myModal.show();
+        }
+    </script>
+</body>
+</html>
